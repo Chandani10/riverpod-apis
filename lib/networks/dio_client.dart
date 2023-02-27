@@ -1,6 +1,14 @@
-import 'package:dio/dio.dart';
-import 'package:riverpod_apis/data/end_points.dart';
-import 'package:riverpod_apis/data/networks/dio_interceptor.dart';
+
+
+
+import 'package:riverpod_apis/constant/export.dart';
+
+// receiveTimeout
+ const int receiveTimeout = 15000;
+
+
+// connectTimeout
+ const int connectionTimeout = 30000;
 
 
 class DioClient {
@@ -10,9 +18,9 @@ class DioClient {
   // injecting dio instance
   DioClient(this._dio) {
     _dio
-    // ..options.baseUrl = Endpoints.baseUrl
-      ..options.connectTimeout = Endpoints.connectionTimeout
-      ..options.receiveTimeout = Endpoints.receiveTimeout
+     //..options.baseUrl = Endpoints.baseUrl
+      ..options.connectTimeout = connectionTimeout
+      ..options.receiveTimeout =receiveTimeout
       ..options.responseType = ResponseType.json
       ..interceptors.add(DioInterceptor())
       ..interceptors.add(LogInterceptor(

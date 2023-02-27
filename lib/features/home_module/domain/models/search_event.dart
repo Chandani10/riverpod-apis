@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:riverpod_apis/domain/models/charcter_model.dart';
+import 'package:riverpod_apis/features/home_module/domain/models/charcter_model.dart';
 part 'search_event.freezed.dart';
 
 @freezed

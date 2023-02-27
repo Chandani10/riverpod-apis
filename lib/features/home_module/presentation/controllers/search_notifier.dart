@@ -1,6 +1,7 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_apis/domain/models/search_event.dart';
-import 'package:riverpod_apis/domain/models/search_model.dart';
+
+
+import 'package:riverpod_apis/constant/export.dart';
+
 
 class SearchNotifier extends StateNotifier<SearchState> {
   SearchNotifier() : super(SearchState.empty());

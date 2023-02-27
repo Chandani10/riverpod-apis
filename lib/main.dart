@@ -1,9 +1,14 @@
-
-
 import 'package:riverpod_apis/constant/export.dart';
-import 'package:riverpod_apis/data/api_repository.dart';
-final apiProvider = Provider((ref) => ApiRepositoryApi());
 
+
+final dioInstanceProvider = Provider<Dio>((ref) {
+  return Dio();
+});
+
+final dioClientProvider = Provider<DioClient>((ref) {
+  final dio = ref.watch(dioInstanceProvider);
+  return DioClient(dio);
+});
 void main() {
 
   runApp( ProviderScope(child: MyApp()));
