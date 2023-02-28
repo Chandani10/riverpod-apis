@@ -2,7 +2,7 @@ export 'package:flutter/material.dart';
 export 'dart:io';
 export 'package:dio/adapter.dart';
 export 'package:flutter/foundation.dart';
-export 'package:flutter_riverpod/flutter_riverpod.dart';
+export 'package:flutter_riverpod/flutter_riverpod.dart' hide describeIdentity ,shortHash;
 export 'dart:convert';
 export 'package:dio/dio.dart';
 export 'package:riverpod_apis/networks/dio_interceptor.dart';

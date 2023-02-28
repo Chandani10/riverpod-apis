@@ -1,12 +1,13 @@
 import 'package:riverpod_apis/constant/export.dart';
 
+
+typedef Reader = T Function<T>(ProviderBase<T> provider);
+
 final apiProvider = Provider<ApiRepositoryApi>((ref) {
   return ApiRepositoryApi(ref.read(dioClientProvider));
 });
 
-final charactersDataProviders =
-    StateNotifierProvider<CharactersDataController, AsyncValue<SearchState>>(
-        (ref) {
+final charactersDataProviders = StateNotifierProvider<CharactersDataController, AsyncValue<SearchState>>((ref) {
   return CharactersDataController(ref.read);
 });
 
