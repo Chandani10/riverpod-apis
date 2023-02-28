@@ -1,27 +1,24 @@
-
-
-
 import 'package:riverpod_apis/constant/export.dart';
 
 final apiProvider = Provider<ApiRepositoryApi>((ref) {
   return ApiRepositoryApi(ref.read(dioClientProvider));
 });
 
-final charactersDataProvider = FutureProvider.autoDispose<List<CharacterModel>>(
-      (ref) {
-    return ref.read(apiProvider).getCharactersData().then(
-          (characters) {
-        final List<CharacterModel> characterList = [];
-        for (var i = 0; i < characters.length; i++) {
-          characterList.add(
-            CharacterModel(
-              characterName: characters[i]["name"],
-              characterImgUrl: characters[i]["image"],
-            ),
-          );
-        }
-        return characterList;
-      },
-    );
-  },
-);
+final charactersDataProviders =
+    StateNotifierProvider<CharactersDataController, AsyncValue<SearchState>>(
+        (ref) {
+  return CharactersDataController(ref.read);
+});
+
+class CharactersDataController extends StateNotifier<AsyncValue<SearchState>> {
+  final Reader read;
+
+  CharactersDataController(this.read) : super(const AsyncValue.loading()) {
+    _getAllData();
+  }
+
+  _getAllData() async {
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => read(apiProvider).getCharactersData());
+  }
+}

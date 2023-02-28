@@ -7,10 +7,13 @@ class ApiRepositoryApi {
   // injecting dio instance
   ApiRepositoryApi(this._dioClient);
 
-  Future getCharactersData() async {
+  Future <SearchState> getCharactersData() async {
     try {
       final res = await _dioClient.get(Endpoints.baseUrl+Endpoints.characterEndPoint);
-      return res.data["results"];
+      final characterList = (res.data["results"] as List<dynamic>)
+          .map((character) => CharacterModel.fromJson(character))
+          .toList();
+      return SearchState(characterList: characterList);
     } on DioError catch (error) {
       debugPrint('******exceptionErrorDio $error');
       throw DioExceptions.fromDioError(error);

@@ -14,11 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+
 /// @nodoc
 mixin _$CharacterModel {
   String get characterName => throw _privateConstructorUsedError;
   String get characterImgUrl => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CharacterModelCopyWith<CharacterModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -101,11 +103,13 @@ class __$$_CharacterModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_CharacterModel extends _CharacterModel {
   _$_CharacterModel(
       {required this.characterName, required this.characterImgUrl})
       : super._();
+
+
 
   @override
   final String characterName;
@@ -128,6 +132,7 @@ class _$_CharacterModel extends _CharacterModel {
                 other.characterImgUrl == characterImgUrl));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, characterName, characterImgUrl);
 
@@ -136,6 +141,8 @@ class _$_CharacterModel extends _CharacterModel {
   @pragma('vm:prefer-inline')
   _$$_CharacterModelCopyWith<_$_CharacterModel> get copyWith =>
       __$$_CharacterModelCopyWithImpl<_$_CharacterModel>(this, _$identity);
+
+
 }
 
 abstract class _CharacterModel extends CharacterModel {
@@ -143,6 +150,8 @@ abstract class _CharacterModel extends CharacterModel {
       {required final String characterName,
       required final String characterImgUrl}) = _$_CharacterModel;
   _CharacterModel._() : super._();
+
+
 
   @override
   String get characterName;

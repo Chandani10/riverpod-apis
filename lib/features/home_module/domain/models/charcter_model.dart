@@ -11,4 +11,6 @@ class CharacterModel with _$CharacterModel {
   const CharacterModel._();
 
   factory CharacterModel.empty() => CharacterModel(characterName: "", characterImgUrl: "");
+  factory CharacterModel.fromJson(Map<String, dynamic> json)
+    => CharacterModel(characterName: json['name'],characterImgUrl: json['image']);
 }
